@@ -1,4 +1,3 @@
--- Users Table --
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -9,7 +8,7 @@ CREATE TABLE users (
 );
 
 
--- Vehicles Table --
+
 CREATE TABLE vehicles (
     vehicle_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -21,7 +20,7 @@ CREATE TABLE vehicles (
 );
 
 
--- Booking Table --
+
 CREATE TABLE bookings (
     booking_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
@@ -35,7 +34,7 @@ CREATE TABLE bookings (
 
 
 
--- Query-01 : Requirement: Retrieve booking information along with Customer name and Vehicle name.
+-- Query-01
 SELECT
     b.booking_id,
     u.name AS customer_name,
@@ -50,7 +49,7 @@ ORDER BY b.booking_id;
 
 
 
--- Query-02 : Requirement: Find all vehicles that have never been booked.
+-- Query-02
 SELECT
     v.vehicle_id,
     v.name,
@@ -68,7 +67,7 @@ WHERE NOT EXISTS (
 ORDER BY v.vehicle_id;
 
 
--- Query-03 : Requirement: Retrieve all available vehicles of a specific type (e.g. cars).
+-- Query-03
 SELECT
     vehicle_id,
     name,
@@ -83,7 +82,7 @@ WHERE type = 'Car'
 
 
 
--- Queries-04 : Requirement: Find total bookings per vehicle and show only vehicles with more than 2 bookings.
+-- Queries-04
 SELECT
     v.name AS vehicle_name,
     COUNT(b.booking_id) AS total_bookings
