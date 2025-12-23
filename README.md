@@ -114,5 +114,4 @@ Automatic cleanup: Implemented via ON DELETE CASCADE.
 
 Business logic enforcement: Handled at the database level for better security and consistency.
 
-## 📌 Conclusion
-This project demonstrates the effective use of PostgreSQL queries to solve real-world problems in a Vehicle Rental System. The queries follow best practices in relational database design and are suitable for academic assignments as well as beginner-level backend projects.
+
