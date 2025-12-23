@@ -39,6 +39,8 @@ ORDER BY b.booking_id;
 
 Relational mapping between tables
 
+---
+
 ### 🔹 Query 2: Identify Vehicles That Have Never Been Booked
 Objective: Find vehicles that do not have any associated booking records.
 
@@ -65,6 +67,8 @@ ORDER BY v.vehicle_id;
 
 Subquery logic
 
+---
+
 ###🔹 Query 3: Retrieve Available Vehicles of a Specific Type
 Objective: Retrieve all vehicles that are currently available for rent and belong to a specific category (Car).
 
@@ -87,6 +91,8 @@ WHERE type = 'Car'
 
 WHERE clause filtering
 
+---
+
 ### 🔹 Query 4: Retrieve Vehicles With More Than Two Bookings
 Objective: Identify vehicles that have been booked more than two times.
 
@@ -105,6 +111,8 @@ HAVING COUNT(b.booking_id) > 2;
 
 ### Aggregate Functions (COUNT)
 
+---
+
 ## ✅ Key Database Features
 Primary and Foreign Key relationships: Ensures data integrity across tables.
 
@@ -114,4 +122,6 @@ Automatic cleanup: Implemented via ON DELETE CASCADE.
 
 Business logic enforcement: Handled at the database level for better security and consistency.
 
+---
 
+* **ERD Diagram Link:** [https://drawsql.app/teams/naimur-rahman-1/diagrams/sql](https://drawsql.app/teams/naimur-rahman-1/diagrams/sql)
