@@ -27,7 +27,7 @@ CREATE TABLE bookings (
     vehicle_id INT REFERENCES vehicles(vehicle_id) ON DELETE CASCADE,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    booking_status VARCHAR(20) CHECK (booking_status IN ('Pending', 'Confirmed', 'Completed', 'Cancelled')) NOT NULL,
+    status VARCHAR(20) CHECK (status IN ('Pending', 'Confirmed', 'Completed', 'Cancelled')) NOT NULL,
     total_cost NUMERIC(10,2) NOT NULL,
     CONSTRAINT validation_dates CHECK (end_date >= start_date)
 );
@@ -41,7 +41,7 @@ SELECT
     v.name AS vehicle_name,
     b.start_date,
     b.end_date,
-    b.booking_status AS status
+    b.status AS booking_status
 FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN vehicles v ON b.vehicle_id = v.vehicle_id
