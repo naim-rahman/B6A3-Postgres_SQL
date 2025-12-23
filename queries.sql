@@ -1,39 +1,3 @@
-CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50),
-    phone VARCHAR(20),
-    role VARCHAR(20) CHECK (role IN ('Admin', 'Customer')) NOT NULL
-);
-
-
-
-CREATE TABLE vehicles (
-    vehicle_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    type VARCHAR(20) CHECK (type IN ('Car', 'Bike', 'Truck')) NOT NULL,
-    model VARCHAR(50) NOT NULL,
-    registration_number VARCHAR(50) UNIQUE NOT NULL,
-    rental_price NUMERIC(10,2) NOT NULL,
-    status VARCHAR(20) CHECK (status IN ('Available', 'Rented', 'Maintenance')) NOT NULL
-);
-
-
-
-CREATE TABLE bookings (
-    booking_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-    vehicle_id INT REFERENCES vehicles(vehicle_id) ON DELETE CASCADE,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    status VARCHAR(20) CHECK (status IN ('Pending', 'Confirmed', 'Completed', 'Cancelled')) NOT NULL,
-    total_cost NUMERIC(10,2) NOT NULL,
-    CONSTRAINT validation_dates CHECK (end_date >= start_date)
-);
-
-
-
 -- Query-01
 SELECT
     b.booking_id,
@@ -90,3 +54,7 @@ FROM vehicles v
 JOIN bookings b ON v.vehicle_id = b.vehicle_id
 GROUP BY v.name
 HAVING COUNT(b.booking_id) > 2;
+
+
+
+
